@@ -10,13 +10,12 @@ public class Eleitor {
     private String cpf; //CPF do eleitor
     private Integer matriz_imagem[][]; //Matriz para armazenar a imagem PPM do eleitor
     private int numero_urna; //Numero da Urna que o eleitor Vota
+    private String estado;
+    private boolean votou;
 
     public Eleitor() {
         this.votou = false;
     }
-    
-    private String estado;
-    private boolean votou;
 
     public boolean isVotou() {
         return votou;
