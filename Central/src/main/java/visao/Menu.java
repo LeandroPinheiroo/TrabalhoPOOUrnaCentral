@@ -23,8 +23,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.xml.ws.http.HTTPException;
 import modelo.Candidato;
+import modelo.Deputado;
 import modelo.Eleitor;
 import modelo.Partido;
+import modelo.Presidente;
 import uteis.Arquivo;
 
 /**
@@ -156,7 +158,13 @@ public class Menu extends javax.swing.JFrame {
             candidatos = new ArrayList();
             String strLine;
             while ((strLine = leitor.readLine()) != null) {
-                candidatos.add(gson.fromJson(strLine, Candidato.class));
+                Deputado deputado = gson.fromJson(strLine, Deputado.class);
+                if(deputado.getEstado() == null) {
+                    Presidente presidente = gson.fromJson(strLine, Presidente.class);
+                    candidatos.add(presidente);
+                }else{
+                    candidatos.add(deputado);
+                }
             }
             leitor.close();
         } catch (FileNotFoundException ex) {
