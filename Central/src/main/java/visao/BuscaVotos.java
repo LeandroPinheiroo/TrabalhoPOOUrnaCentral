@@ -119,9 +119,17 @@ public class BuscaVotos extends javax.swing.JFrame {
      * @version 4.0
      *
      */
+    public void zera_votos() {
+        for (Candidato candidato : candidatoDao.retornaCandidatos()) {
+            candidato.setQuantidadeVotos(0);
+        }
+    }
+
     public void contabilizaVotos() {
+        this.zera_votos();//zera a quantidade de votos que os candidatos possuem
         ArrayList<Candidato> votos = this.geraObjetoVotacao();//gera objeto de votos e armazena todos no arraylist
         this.votoBrancoPresidente = 0;//contador de votos branco inicia em 0
+        this.votoBrancoDeputado = 0;
         if (!votos.isEmpty()) {//Verifica se o Arraylist de votos nao esta vazio
             for (Candidato voto : votos) {//varre o vetor de votos      
                 if (voto.getNumero() != -1234 && voto.getNumero() != -12) {//caso tenha candidato armazenado no voto
@@ -160,8 +168,7 @@ public class BuscaVotos extends javax.swing.JFrame {
                 == 1) {
             model.addRow(new Object[]{"Votos em Branco", "", this.votoBrancoDeputado});//adiciona a primeira linha com votos em branco
         }
-        for (Candidato candidato
-                : candidatoDao.retornaCandidatos()) {//varre o vetor de candidatos
+        for (Candidato candidato : candidatoDao.retornaCandidatos()) {//varre o vetor de candidatos
             if (candidato instanceof Presidente && jComboTipoCandidato.getSelectedIndex() == 0) {
                 model.addRow(new Object[]{candidato.getNome(), candidato.getPartido().getNome(), candidato.getQuantidadeVotos()});//insere na tabela seus partidos nomes e quantidade de votos
             } else if (candidato instanceof Deputado) {
@@ -302,10 +309,17 @@ public class BuscaVotos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoGeraGraficoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGeraGraficoActionPerformed
-        new MostraGraficos(candidatoDao, this.votoBrancoPresidente).setVisible(true);
+        if (this.jComboTipoCandidato.getSelectedIndex() == 0) {
+            new MostraGraficos(candidatoDao, this.votoBrancoPresidente, "").setVisible(true);
+        } else if (this.jComboTipoCandidato.getSelectedIndex() == 1) {
+            new MostraGraficos(candidatoDao, this.votoBrancoDeputado, this.jComboEstado.getSelectedItem().toString()).setVisible(true);
+        }
+
     }//GEN-LAST:event_botaoGeraGraficoActionPerformed
 
     private void botaoBaixaVotos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBaixaVotos1ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tabelaVotos.getModel();
+        model.setNumRows(0);
         this.criaArquivoVotos();
         this.contabilizaVotos();
         JOptionPane.showMessageDialog(this, "Dados dos votos baixados com sucesso!\n");

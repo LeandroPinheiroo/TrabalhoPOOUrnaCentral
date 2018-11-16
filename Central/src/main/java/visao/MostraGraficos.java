@@ -8,6 +8,8 @@ package visao;
 import dao.CandidatoDao;
 import javax.swing.JPanel;
 import modelo.Candidato;
+import modelo.Deputado;
+import modelo.Presidente;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -16,42 +18,61 @@ import org.jfree.data.general.PieDataset;
 
 /**
  *
- * @author João Paulo e  Leandro
+ * @author João Paulo e Leandro
  */
 public class MostraGraficos extends javax.swing.JFrame {
 
-    
     private CandidatoDao candidatoDao;
     private int votoBranco;
-    /**Construtor do Frame
-     *@param candidatoDao, instancia do Dao da classe de candidatos
-     *@param votoBranco, valor inteiro contendo a quantidade de votos em branco
-     *@version 4.0
+    private String estado;
+
+    /**
+     * Construtor do Frame
+     *
+     * @param candidatoDao, instancia do Dao da classe de candidatos
+     * @param votoBranco, valor inteiro contendo a quantidade de votos em branco
+     * @param estado, Stirng contendo estado para gerar grafo
+     * @version 4.0
      */
-    public MostraGraficos(CandidatoDao candidatoDao,int votoBranco) {
+    public MostraGraficos(CandidatoDao candidatoDao, int votoBranco, String estado) {
         this.candidatoDao = candidatoDao;
         this.votoBranco = votoBranco;
+        this.estado = estado;
         initComponents();
         this.setContentPane(createDemoPanel());
         this.setLocationRelativeTo(null);
         this.setTitle("Gráfico Eleições");
     }
-    /**Metodo responsavel por gerar grafico com base nas informacoes dos candidatos
-     *@return PieDataset, instancia do objeto de grafico gerado
-     *@version 4.0
+
+    /**
+     * Metodo responsavel por gerar grafico com base nas informacoes dos
+     * candidatos
+     *
+     * @return PieDataset, instancia do objeto de grafico gerado
+     * @version 4.0
      */
     public PieDataset criaGrafico() {
         DefaultPieDataset dataset = new DefaultPieDataset();//cria objeto responsavel por gear o grafico
-        for (Candidato candidato : candidatoDao.retornaCandidatos()){//varre o vetor de candidatos
-            dataset.setValue(candidato.getNome(), candidato.getQuantidadeVotos());//seta as informacoes no grafico
+        for (Candidato candidato : candidatoDao.retornaCandidatos()) {//varre o vetor de candidatos
+            if (this.estado.equals("")) {
+                if (candidato instanceof Presidente) {
+                    dataset.setValue(candidato.getNome(), candidato.getQuantidadeVotos());//seta as informacoes no grafico
+                }
+            } else if (candidato instanceof Deputado) {
+                if (this.estado.equals(((Deputado) candidato).getEstado())) {
+                    dataset.setValue(candidato.getNome(), candidato.getQuantidadeVotos());//seta as informacoes no grafico
+                }
+            }
         }
         dataset.setValue("Votos brancos", this.votoBranco);//seta quantidade de votos brancos no grafico
         return dataset;//retorna o grafico
     }
+
     /**
-     *@param dataset instancia do objeto de PieDataset, contendo as informaceos do Grafico
-     *@return JFreeChart, instancia do objeto de grafico gerado
-     *@version 4.0
+     * @param dataset instancia do objeto de PieDataset, contendo as informaceos
+     * do Grafico
+     * @return JFreeChart, instancia do objeto de grafico gerado
+     * @version 4.0
      */
     public JFreeChart createChart(PieDataset dataset) {
         JFreeChart chart = ChartFactory.createPieChart(
@@ -65,8 +86,8 @@ public class MostraGraficos extends javax.swing.JFrame {
     }
 
     /**
-     *@return JPanel, Painel contendo o grafico gerado
-     *@version 4.0
+     * @return JPanel, Painel contendo o grafico gerado
+     * @version 4.0
      */
     public JPanel createDemoPanel() {
         JFreeChart chart = createChart(criaGrafico());//gera o grafico
@@ -93,7 +114,6 @@ public class MostraGraficos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
