@@ -46,6 +46,7 @@ public class BuscaVotos extends javax.swing.JFrame {
         this.candidatoDao = candidatoDao;
         initComponents();
         jComboEstado.setVisible(false);
+        jComboEstado.setEditable(false);
         botaoGeraGrafico.setEnabled(false);
         this.setTitle("Busca Votos");
         this.setLocationRelativeTo(null);
@@ -250,7 +251,7 @@ public class BuscaVotos extends javax.swing.JFrame {
             }
         });
 
-        jComboTipoCandidato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Presidentes", "Deputados Federais", " " }));
+        jComboTipoCandidato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Presidentes", "Deputados Federais" }));
         jComboTipoCandidato.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }

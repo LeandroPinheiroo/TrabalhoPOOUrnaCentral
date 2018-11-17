@@ -1,2 +1,18 @@
-{"estado":"PR","nome":"Leandro","numero":1327,"cpf":"136.981.136-51","partido":{"numero":13,"nome":"PTZINHO"},"quantidadeVotos":0}
-{"nome":"Parana","numero":13,"cpf":"136.981.136-51","partido":{"numero":13,"nome":"PTZINHO"},"quantidadeVotos":0}
+{"estado":"MG","nome":"Leonardo Monteiro","numero":1363,"cpf":"805.808.770-00","partido":{"numero":13,"nome":"Pt"},"quantidadeVotos":0}
+{"estado":"MG","nome":"Margarida Salomao","numero":1314,"cpf":"280.711.680-92","partido":{"numero":13,"nome":"Pt"},"quantidadeVotos":0}
+{"estado":"MG","nome":"Andre Janones","numero":7040,"cpf":"478.383.700-78","partido":{"numero":51,"nome":"AVANTE"},"quantidadeVotos":0}
+{"estado":"MG","nome":"Cabo Junio Amaral","numero":1720,"cpf":"478.383.700-78","partido":{"numero":17,"nome":"PSL"},"quantidadeVotos":0}
+{"estado":"MG","nome":"Lucas Gonzalez","numero":3022,"cpf":"478.383.700-78","partido":{"numero":30,"nome":"NOVO"},"quantidadeVotos":0}
+{"estado":"MG","nome":"Aecio Neves","numero":4500,"cpf":"478.383.700-78","partido":{"numero":45,"nome":"PSDB"},"quantidadeVotos":0}
+{"estado":"MG","nome":"Julio Delgado","numero":4050,"cpf":"296.540.390-60","partido":{"numero":40,"nome":"PSB"},"quantidadeVotos":0}
+{"estado":"PR","nome":"Deputado Paranazinho","numero":2525,"cpf":"296.540.390-60","partido":{"numero":50,"nome":"PSOL"},"quantidadeVotos":0}
+{"estado":"PR","nome":"Deputado Paranazao","numero":1327,"cpf":"296.540.390-60","partido":{"numero":13,"nome":"Pt"},"quantidadeVotos":0}
+{"estado":"MG","nome":"Parana Deps Deps","numero":1,"cpf":"296.540.390-60","partido":{"numero":40,"nome":"PSB"},"quantidadeVotos":0}
+{"estado":"SP","nome":"Deputado de Sao Paulo","numero":1327,"cpf":"296.540.390-60","partido":{"numero":13,"nome":"Pt"},"quantidadeVotos":0}
+{"estado":"SP","nome":"Deputado de Paulo Sao","numero":1905,"cpf":"296.540.390-60","partido":{"numero":45,"nome":"PSDB"},"quantidadeVotos":0}
+{"estado":"SP","nome":"Jose Da Silva SP","numero":7777,"cpf":"296.540.390-60","partido":{"numero":17,"nome":"PSL"},"quantidadeVotos":0}
+{"nome":"Haddad","numero":13,"cpf":"479.912.890-60","partido":{"numero":13,"nome":"Pt"},"quantidadeVotos":0}
+{"nome":"Bolsonaro","numero":17,"cpf":"479.912.890-60","partido":{"numero":17,"nome":"PSL"},"quantidadeVotos":0}
+{"nome":"Amoedo","numero":30,"cpf":"479.912.890-60","partido":{"numero":30,"nome":"NOVO"},"quantidadeVotos":0}
+{"nome":"Boulos","numero":50,"cpf":"479.912.890-60","partido":{"numero":50,"nome":"PSOL"},"quantidadeVotos":0}
+{"nome":"Daciolo","numero":51,"cpf":"479.912.890-60","partido":{"numero":51,"nome":"AVANTE"},"quantidadeVotos":0}
