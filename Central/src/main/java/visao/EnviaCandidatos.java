@@ -7,10 +7,12 @@ package visao;
 
 import conexao.ConexaoDrive;
 import dao.CandidatoDao;
+import excecoes.SemConexaoComIntenetException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import uteis.Arquivo;
+import uteis.VerificaInternet;
 
 /**
  *
@@ -130,6 +132,10 @@ public class EnviaCandidatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enviaCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviaCandidatoActionPerformed
+        if(VerificaInternet.verificaConexao("https://www.google.com/") == false){
+            JOptionPane.showMessageDialog(this, new SemConexaoComIntenetException().getMessage());
+            return;
+        }
         this.geraJson();
         this.apagaDrive();
         this.enviaDrive();

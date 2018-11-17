@@ -7,10 +7,12 @@ package visao;
 
 import conexao.ConexaoDrive;
 import dao.PartidoDao;
+import excecoes.SemConexaoComIntenetException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import uteis.Arquivo;
+import uteis.VerificaInternet;
 
 /**
  *
@@ -22,9 +24,12 @@ public class EnviaPartidos extends javax.swing.JFrame {
      * Creates new form EnviaPartidos
      */
     private PartidoDao partidoDao;
-    /**Construtor do Frame
-     *@param partidoDao, instancia do Dao da classe de partidos
-     *@version 4.0
+
+    /**
+     * Construtor do Frame
+     *
+     * @param partidoDao, instancia do Dao da classe de partidos
+     * @version 4.0
      */
     public EnviaPartidos(PartidoDao partidoDao) {
         this.partidoDao = partidoDao;
@@ -32,28 +37,34 @@ public class EnviaPartidos extends javax.swing.JFrame {
         this.setTitle("Envia Partidos");
         this.setLocationRelativeTo(null);
     }
-    /**Metodo reponsavel por gerar json de todos os partidos cadastrados
-     * 
-     *@version 1.0
+
+    /**
+     * Metodo reponsavel por gerar json de todos os partidos cadastrados
+     *
+     * @version 1.0
      */
-    public void geraJson(){
-        ArrayList<Object> l = (ArrayList<Object>)(Object)partidoDao.retornaPartidos();
-        Arquivo.criaArquivoJSON(l,"partidos.json");
+    public void geraJson() {
+        ArrayList<Object> l = (ArrayList<Object>) (Object) partidoDao.retornaPartidos();
+        Arquivo.criaArquivoJSON(l, "partidos.json");
     }
-    /**Metodo reponsavel por enviar Json para o Drive
-     * 
-     *@version 1.0
+
+    /**
+     * Metodo reponsavel por enviar Json para o Drive
+     *
+     * @version 1.0
      */
-    public void enviaDrive(){
+    public void enviaDrive() {
         ConexaoDrive.getInstance();
         ConexaoDrive.criaArquivo("partidos.json", "partidos.json");
         JOptionPane.showMessageDialog(this, "Dados dos partidos enviados com sucesso!\n");
     }
-     /**Metodo reponsavel por apagar arquivo do drive
-     * 
-     *@version 1.0
+
+    /**
+     * Metodo reponsavel por apagar arquivo do drive
+     *
+     * @version 1.0
      */
-    public void apagaDrive(){
+    public void apagaDrive() {
         ConexaoDrive.getInstance();
         List<com.google.api.services.drive.model.File> lista_arquivos = ConexaoDrive.listaArquivos();
         for (com.google.api.services.drive.model.File lista_arquivo : lista_arquivos) {
@@ -136,12 +147,15 @@ public class EnviaPartidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (VerificaInternet.verificaConexao("https://www.google.com/") == false) {
+            JOptionPane.showMessageDialog(this, new SemConexaoComIntenetException().getMessage());
+            return;
+        }
         this.geraJson();
         this.apagaDrive();
         this.enviaDrive();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

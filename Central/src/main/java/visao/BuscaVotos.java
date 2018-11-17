@@ -3,6 +3,7 @@ package visao;
 import com.google.gson.Gson;
 import conexao.ConexaoDrive;
 import dao.CandidatoDao;
+import excecoes.SemConexaoComIntenetException;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,6 +21,7 @@ import modelo.Candidato;
 import modelo.Deputado;
 import modelo.Presidente;
 import uteis.Arquivo;
+import uteis.VerificaInternet;
 
 /**
  *
@@ -320,6 +322,10 @@ public class BuscaVotos extends javax.swing.JFrame {
     private void botaoBaixaVotos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBaixaVotos1ActionPerformed
         DefaultTableModel model = (DefaultTableModel) tabelaVotos.getModel();
         model.setNumRows(0);
+        if (VerificaInternet.verificaConexao("https://www.google.com/") == false) {
+            JOptionPane.showMessageDialog(this, new SemConexaoComIntenetException().getMessage());
+            return;
+        }
         this.criaArquivoVotos();
         this.contabilizaVotos();
         JOptionPane.showMessageDialog(this, "Dados dos votos baixados com sucesso!\n");

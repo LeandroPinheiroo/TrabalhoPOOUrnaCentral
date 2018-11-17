@@ -10,6 +10,7 @@ import conexao.ConexaoDrive;
 import dao.CandidatoDao;
 import dao.EleitorDao;
 import dao.PartidoDao;
+import excecoes.SemConexaoComIntenetException;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,6 +29,7 @@ import modelo.Eleitor;
 import modelo.Partido;
 import modelo.Presidente;
 import uteis.Arquivo;
+import uteis.VerificaInternet;
 
 /**
  *
@@ -41,8 +43,11 @@ public class Menu extends javax.swing.JFrame {
     private PartidoDao partidoDao = new PartidoDao();
     private EleitorDao eleitorDao = new EleitorDao();
     private CandidatoDao candidatoDao = new CandidatoDao();
-    /**Construtor do Frame
-     *@version 3.0
+
+    /**
+     * Construtor do Frame
+     *
+     * @version 3.0
      */
     public Menu() {
         initComponents();
@@ -50,9 +55,11 @@ public class Menu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("Central");
     }
-    /**Metodo reponsavel por as informacoes contidas no drive e nao localmente
-     * 
-     *@version 1.0
+
+    /**
+     * Metodo reponsavel por as informacoes contidas no drive e nao localmente
+     *
+     * @version 1.0
      */
     public void atualizaDados() {
         criaArquivoCandidatos();//cria arquivos de Candidatos partidos e eleitores
@@ -62,18 +69,19 @@ public class Menu extends javax.swing.JFrame {
         candidatoDao.appendArrayList(geraObjetoCandidato());
         partidoDao.appendArrayList(geraObjetoPartido());
         eleitorDao.appendArrayList(geraObjetoEleitores());
-        JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso","Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    /**Metodo reponsavel por criar arquivo de eleitores localmente
-     * 
-     *@version 1.0
+    /**
+     * Metodo reponsavel por criar arquivo de eleitores localmente
+     *
+     * @version 1.0
      */
     public void criaArquivoEleitores() {
         ConexaoDrive.getInstance();
         List<com.google.api.services.drive.model.File> lista_arquivos = ConexaoDrive.listaArquivos();
-        if(lista_arquivos == null){
-            JOptionPane.showMessageDialog(this, "Erro, confira sua conexão com a internet","Erro",JOptionPane.ERROR_MESSAGE);
+        if (lista_arquivos == null) {
+            JOptionPane.showMessageDialog(this, "Erro, confira sua conexão com a internet", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         for (com.google.api.services.drive.model.File lista_arquivo : lista_arquivos) {
@@ -91,15 +99,17 @@ public class Menu extends javax.swing.JFrame {
             }
         }
     }
-    /**Metodo reponsavel por criar arquivo de candidatos localmente
-     * 
-     *@version 1.0
+
+    /**
+     * Metodo reponsavel por criar arquivo de candidatos localmente
+     *
+     * @version 1.0
      */
     public void criaArquivoCandidatos() {
         ConexaoDrive.getInstance();
         List<com.google.api.services.drive.model.File> lista_arquivos = ConexaoDrive.listaArquivos();
-        if(lista_arquivos == null){
-            JOptionPane.showMessageDialog(this, "Erro, confira sua conexão com a internet","Erro",JOptionPane.ERROR_MESSAGE);
+        if (lista_arquivos == null) {
+            JOptionPane.showMessageDialog(this, "Erro, confira sua conexão com a internet", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         for (com.google.api.services.drive.model.File lista_arquivo : lista_arquivos) {
@@ -118,15 +128,17 @@ public class Menu extends javax.swing.JFrame {
             }
         }
     }
-    /**Metodo reponsavel por criar arquivo de partidos localmente
-     * 
-     *@version 1.0
+
+    /**
+     * Metodo reponsavel por criar arquivo de partidos localmente
+     *
+     * @version 1.0
      */
     public void criaArquivoPartidos() {
         ConexaoDrive.getInstance();
         List<com.google.api.services.drive.model.File> lista_arquivos = ConexaoDrive.listaArquivos();
-        if(lista_arquivos == null){
-            JOptionPane.showMessageDialog(this, "Erro, confira sua conexão com a internet","Erro",JOptionPane.ERROR_MESSAGE);
+        if (lista_arquivos == null) {
+            JOptionPane.showMessageDialog(this, "Erro, confira sua conexão com a internet", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         for (com.google.api.services.drive.model.File lista_arquivo : lista_arquivos) {
@@ -144,9 +156,13 @@ public class Menu extends javax.swing.JFrame {
             }
         }
     }
-    /**Metodo reponsavel por gerar objeto de candidatos com base no arquivo local
+
+    /**
+     * Metodo reponsavel por gerar objeto de candidatos com base no arquivo
+     * local
+     *
      * @return ArrayList, um array contendo todos os candidatos cadastrados
-     *@version 1.0
+     * @version 1.0
      */
     public ArrayList<Candidato> geraObjetoCandidato() {
         Gson gson = new Gson();
@@ -159,10 +175,10 @@ public class Menu extends javax.swing.JFrame {
             String strLine;
             while ((strLine = leitor.readLine()) != null) {
                 Deputado deputado = gson.fromJson(strLine, Deputado.class);
-                if(deputado.getEstado() == null) {
+                if (deputado.getEstado() == null) {
                     Presidente presidente = gson.fromJson(strLine, Presidente.class);
                     candidatos.add(presidente);
-                }else{
+                } else {
                     candidatos.add(deputado);
                 }
             }
@@ -175,9 +191,12 @@ public class Menu extends javax.swing.JFrame {
         }
         return candidatos;
     }
-    /**Metodo reponsavel por gerar objeto de partidos com base no arquivo local
+
+    /**
+     * Metodo reponsavel por gerar objeto de partidos com base no arquivo local
+     *
      * @return ArrayList, um array contendo todos os Partidos cadastrados
-     *@version 1.0
+     * @version 1.0
      */
     public ArrayList<Partido> geraObjetoPartido() {
         Gson gson = new Gson();
@@ -199,9 +218,12 @@ public class Menu extends javax.swing.JFrame {
         }
         return partidos;
     }
-    /**Metodo reponsavel por gerar objeto de eleitores com base no arquivo local
+
+    /**
+     * Metodo reponsavel por gerar objeto de eleitores com base no arquivo local
+     *
      * @return ArrayList, um array contendo todos os eleitores cadastrados
-     *@version 1.0
+     * @version 1.0
      */
     public ArrayList<Eleitor> geraObjetoEleitores() {
         Gson gson = new Gson();
@@ -413,6 +435,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_driveVotosActionPerformed
 
     private void driveAtualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_driveAtualizaActionPerformed
+        if (VerificaInternet.verificaConexao("https://www.google.com/") == false) {
+            JOptionPane.showMessageDialog(this, new SemConexaoComIntenetException().getMessage());
+            return;
+        }
         this.atualizaDados();
     }//GEN-LAST:event_driveAtualizaActionPerformed
 

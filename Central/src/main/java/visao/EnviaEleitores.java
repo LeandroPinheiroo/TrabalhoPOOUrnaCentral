@@ -7,10 +7,12 @@ package visao;
 
 import conexao.ConexaoDrive;
 import dao.EleitorDao;
+import excecoes.SemConexaoComIntenetException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import uteis.Arquivo;
+import uteis.VerificaInternet;
 
 /**
  *
@@ -22,9 +24,12 @@ public class EnviaEleitores extends javax.swing.JFrame {
      * Creates new form EnviaPartidos
      */
     private EleitorDao eleitorDao;
-    /**Construtor do Frame
-     *@param eleitorDao, instancia do Dao da classe de eleitores
-     *@version 4.0
+
+    /**
+     * Construtor do Frame
+     *
+     * @param eleitorDao, instancia do Dao da classe de eleitores
+     * @version 4.0
      */
     public EnviaEleitores(EleitorDao eleitorDao) {
         this.eleitorDao = eleitorDao;
@@ -32,28 +37,34 @@ public class EnviaEleitores extends javax.swing.JFrame {
         this.setTitle("Envia Eleitores");
         this.setLocationRelativeTo(null);
     }
-    /**Metodo reponsavel por gerar json de todos os eleitores cadastrados
-     * 
-     *@version 1.0
+
+    /**
+     * Metodo reponsavel por gerar json de todos os eleitores cadastrados
+     *
+     * @version 1.0
      */
-    public void geraJson(){
-        ArrayList<Object> l = (ArrayList<Object>)(Object)eleitorDao.retornaEleitores();
+    public void geraJson() {
+        ArrayList<Object> l = (ArrayList<Object>) (Object) eleitorDao.retornaEleitores();
         Arquivo.criaArquivoJSON(l, "eleitores.json");
     }
-    /**Metodo reponsavel por enviar Json para o Drive
-     * 
-     *@version 1.0
+
+    /**
+     * Metodo reponsavel por enviar Json para o Drive
+     *
+     * @version 1.0
      */
-    public void enviaDrive(){
+    public void enviaDrive() {
         ConexaoDrive.getInstance();//Cria conexao com o drive
         ConexaoDrive.criaArquivo("eleitores.json", "eleitores.json");//Cria arquivo de eleitores
         JOptionPane.showMessageDialog(this, "Dados dos eleitores enviados com sucesso!\n");//mostra mensagem de sucesso
     }
-    /**Metodo reponsavel por apagar arquivo do drive
-     * 
-     *@version 1.0
+
+    /**
+     * Metodo reponsavel por apagar arquivo do drive
+     *
+     * @version 1.0
      */
-    public void apagaDrive(){
+    public void apagaDrive() {
         ConexaoDrive.getInstance();//Cria conexao com o drive
         List<com.google.api.services.drive.model.File> lista_arquivos = ConexaoDrive.listaArquivos();//lista todos os arquivos do drive
         for (com.google.api.services.drive.model.File lista_arquivo : lista_arquivos) {
@@ -62,7 +73,6 @@ public class EnviaEleitores extends javax.swing.JFrame {
             }
         }
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -137,12 +147,15 @@ public class EnviaEleitores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jenviaEleitoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenviaEleitoresActionPerformed
+        if (VerificaInternet.verificaConexao("https://www.google.com/") == false) {
+            JOptionPane.showMessageDialog(this, new SemConexaoComIntenetException().getMessage());
+            return;
+        }
         this.geraJson();
         this.apagaDrive();
         this.enviaDrive();
     }//GEN-LAST:event_jenviaEleitoresActionPerformed
 
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
