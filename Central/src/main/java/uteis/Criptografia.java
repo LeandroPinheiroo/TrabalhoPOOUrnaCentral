@@ -20,7 +20,9 @@ import javax.crypto.SecretKey;
  * @author weth
  */
 public class Criptografia {
-
+    /**Método para criptografar no método DES
+     * @param conteudoDescriptografo
+     @return String criptografada*/
     public static String criptografaDES(String conteudoDescriptografo) {
         try {
             KeyGenerator keygenerator = KeyGenerator.getInstance("DES");
@@ -48,7 +50,9 @@ public class Criptografia {
         }
         return null;
     }
-
+    /**Método para discriptografar na forma DES
+     * @param conteudoCriptografado
+     @return String descriptografado*/
     public static String descriptograDes(String conteudoCriptografado) {
         try {
             KeyGenerator keygenerator = KeyGenerator.getInstance("DES");

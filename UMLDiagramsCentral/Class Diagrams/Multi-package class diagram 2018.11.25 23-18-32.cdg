@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-package class diagram">
+  <ClassDiagramComponents>
+    <Class name="ConexaoDrive" package="conexao" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="APPLICATION_NAME" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="JSON_FACTORY" type="JsonFactory" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="TOKENS_DIRECTORY_PATH" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SCOPES" type="List&lt;String&gt;" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="CREDENTIALS_FILE_PATH" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="HTTP_TRANSPORT" type="NetHttpTransport" visibility="private" isStatic="true"/>
+        <Field name="servico" type="Drive" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getCredentials" returnType="Credential" visibility="private" isStatic="true">
+          <Argument type="NetHttpTransport" name="HTTP_TRANSPORT"/>
+        </Method>
+        <Method name="getInstance" returnType="Drive" visibility="public" isStatic="true"/>
+        <Method name="criaPasta" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="nome"/>
+        </Method>
+        <Method name="criaArquivo" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="nome"/>
+          <Argument type="String" name="caminho"/>
+        </Method>
+        <Method name="listaArquivos" returnType="List&lt;File&gt;" visibility="public" isStatic="true"/>
+        <Method name="removerArquivo" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="id"/>
+        </Method>
+        <Method name="leArquivoGD" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="arquivoID"/>
+        </Method>
+        <Method name="mudaArquivoPasta" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="arquivoID"/>
+          <Argument type="String" name="pastaID"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CandidatoDao" package="dao" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="candidatos" type="ArrayList&lt;Candidato&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="cadastraCandidato" returnType="void" visibility="public">
+          <Argument type="Candidato" name="candidato"/>
+        </Method>
+        <Method name="removeCandidato" returnType="void" visibility="public">
+          <Argument type="Candidato" name="candidato"/>
+        </Method>
+        <Method name="retornaCandidatos" returnType="ArrayList&lt;Candidato&gt;" visibility="public"/>
+        <Method name="appendArrayList" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Candidato&gt;" name="candidatos"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EleitorDao" package="dao" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="eleitores" type="ArrayList&lt;Eleitor&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="cadastraEleitor" returnType="void" visibility="public">
+          <Argument type="Eleitor" name="eleitor"/>
+        </Method>
+        <Method name="removeEleitor" returnType="void" visibility="public">
+          <Argument type="Eleitor" name="eleitor"/>
+        </Method>
+        <Method name="retornaEleitores" returnType="ArrayList&lt;Eleitor&gt;" visibility="public"/>
+        <Method name="appendArrayList" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Eleitor&gt;" name="eleitores"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PartidoDao" package="dao" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="partidos" type="ArrayList&lt;Partido&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="cadastraPartido" returnType="void" visibility="public">
+          <Argument type="Partido" name="partido"/>
+        </Method>
+        <Method name="removePartido" returnType="void" visibility="public">
+          <Argument type="Partido" name="partido"/>
+        </Method>
+        <Method name="retornaPartidos" returnType="ArrayList&lt;Partido&gt;" visibility="public"/>
+        <Method name="retornaPartido" returnType="Partido" visibility="public">
+          <Argument type="String" name="nome"/>
+        </Method>
+        <Method name="appendArrayList" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Partido&gt;" name="partidos"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SemConexaoComIntenetException" package="excecoes" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="DadoIncosistenteExpection" package="excecoes" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CandidatoInvalidoException" package="excecoes" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="UsuarioNaoEncontradoException" package="excecoes" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="CpfInvalidoExpection" package="excecoes" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Eleitor" package="modelo" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="titulo_eleitor" type="String" visibility="private"/>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="cpf" type="String" visibility="private"/>
+        <Field name="matriz_imagem" type="Integer" visibility="private"/>
+        <Field name="numero_urna" type="int" visibility="private"/>
+        <Field name="estado" type="String" visibility="private"/>
+        <Field name="votou" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="isVotou" returnType="boolean" visibility="public"/>
+        <Method name="setVotou" returnType="void" visibility="public">
+          <Argument type="boolean" name="votou"/>
+        </Method>
+        <Method name="getEstado" returnType="String" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="String" name="estado"/>
+        </Method>
+        <Method name="getTitulo_eleitor" returnType="String" visibility="public"/>
+        <Method name="setTitulo_eleitor" returnType="void" visibility="public">
+          <Argument type="String" name="titulo_eleitor"/>
+        </Method>
+        <Method name="getNome" returnType="String" visibility="public"/>
+        <Method name="setNome" returnType="void" visibility="public">
+          <Argument type="String" name="nome"/>
+        </Method>
+        <Method name="getCpf" returnType="String" visibility="public"/>
+        <Method name="setCpf" returnType="void" visibility="public">
+          <Argument type="String" name="cpf"/>
+        </Method>
+        <Method name="getMatriz_imagem" returnType="Integer[][]" visibility="public"/>
+        <Method name="setMatriz_imagem" returnType="void" visibility="public">
+          <Argument type="Integer[][]" name="matriz_imagem"/>
+        </Method>
+        <Method name="getNumero_urna" returnType="int" visibility="public"/>
+        <Method name="setNumero_urna" returnType="void" visibility="public">
+          <Argument type="int" name="numero_urna"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Partido" package="modelo" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="numero" type="int" visibility="private"/>
+        <Field name="nome" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getNumero" returnType="int" visibility="public"/>
+        <Method name="setNumero" returnType="void" visibility="public">
+          <Argument type="int" name="numero"/>
+        </Method>
+        <Method name="getNome" returnType="String" visibility="public"/>
+        <Method name="setNome" returnType="void" visibility="public">
+          <Argument type="String" name="nome"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Presidente" package="modelo" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Deputado" package="modelo" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="estado" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getEstado" returnType="String" visibility="public"/>
+        <Method name="setEstado" returnType="void" visibility="public">
+          <Argument type="String" name="estado"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Candidato" package="modelo" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="numero" type="int" visibility="private"/>
+        <Field name="cpf" type="String" visibility="private"/>
+        <Field name="partido" type="Partido" visibility="private"/>
+        <Field name="quantidadeVotos" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getQuantidadeVotos" returnType="int" visibility="public"/>
+        <Method name="setQuantidadeVotos" returnType="void" visibility="public">
+          <Argument type="int" name="quantidadeVotos"/>
+        </Method>
+        <Method name="getNome" returnType="String" visibility="public"/>
+        <Method name="setNome" returnType="void" visibility="public">
+          <Argument type="String" name="nome"/>
+        </Method>
+        <Method name="getNumero" returnType="int" visibility="public"/>
+        <Method name="setNumero" returnType="void" visibility="public">
+          <Argument type="int" name="numero"/>
+        </Method>
+        <Method name="getCpf" returnType="String" visibility="public"/>
+        <Method name="setCpf" returnType="void" visibility="public">
+          <Argument type="String" name="cpf"/>
+        </Method>
+        <Method name="getPartido" returnType="Partido" visibility="public"/>
+        <Method name="setPartido" returnType="void" visibility="public">
+          <Argument type="Partido" name="partido"/>
+        </Method>
+        <Method name="compareTo" returnType="int" visibility="public">
+          <Argument type="Object" name="objeto"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VerificaInternet" package="uteis" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="verificaConexao" returnType="boolean" visibility="public" isStatic="true">
+          <Argument type="String" name="endereco"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Arquivo" package="uteis" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="leImagemMatriz" returnType="Integer[][]" visibility="public">
+          <Argument type="String" name="caminho"/>
+        </Method>
+        <Method name="criaArquivo" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="conteudo"/>
+          <Argument type="String" name="caminho"/>
+        </Method>
+        <Method name="criaArquivoJSON" returnType="void" visibility="public" isStatic="true">
+          <Argument type="ArrayList&lt;Object&gt;" name="lista"/>
+          <Argument type="String" name="caminho"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Verifica" package="uteis" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="validaCPF" returnType="boolean" visibility="public" isStatic="true">
+          <Argument type="String" name="Cpf"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Criptografia" package="uteis" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="criptografaDES" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="conteudoDescriptografo"/>
+        </Method>
+        <Method name="descriptograDes" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="conteudoCriptografado"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MostraGraficos" package="visao" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="candidatoDao" type="CandidatoDao" visibility="private"/>
+        <Field name="votoBranco" type="int" visibility="private"/>
+        <Field name="estado" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="CandidatoDao" name="candidatoDao"/>
+          <Argument type="int" name="votoBranco"/>
+          <Argument type="String" name="estado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="criaGrafico" returnType="PieDataset" visibility="public"/>
+        <Method name="createChart" returnType="JFreeChart" visibility="public">
+          <Argument type="PieDataset" name="dataset"/>
+        </Method>
+        <Method name="createDemoPanel" returnType="JPanel" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="EnviaCandidatos" package="visao" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="candidatoDao" type="CandidatoDao" visibility="private"/>
+        <Field name="enviaCandidato" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jlabelCandidato" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="CandidatoDao" name="candidatoDao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="geraJson" returnType="void" visibility="public"/>
+        <Method name="enviaDrive" returnType="void" visibility="public"/>
+        <Method name="apagaDrive" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="enviaCandidatoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Menu" package="visao" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields>
+        <Field name="partidoDao" type="PartidoDao" visibility="private"/>
+        <Field name="eleitorDao" type="EleitorDao" visibility="private"/>
+        <Field name="candidatoDao" type="CandidatoDao" visibility="private"/>
+        <Field name="Cadastros" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="cadCandidato" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="cadCandidato1" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="cadEleitor" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="cadPartido" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="driveAtualiza" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="driveCandidato" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="driveEleitor" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="drivePartido" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="driveVotos" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jMenu1" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jMenuBar1" type="javax.swing.JMenuBar" visibility="private"/>
+        <Field name="jMenuItem1" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMenuUpload" type="javax.swing.JMenu" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="atualizaDados" returnType="void" visibility="public"/>
+        <Method name="criaArquivoEleitores" returnType="void" visibility="public"/>
+        <Method name="criaArquivoCandidatos" returnType="void" visibility="public"/>
+        <Method name="criaArquivoPartidos" returnType="void" visibility="public"/>
+        <Method name="geraObjetoCandidato" returnType="ArrayList&lt;Candidato&gt;" visibility="public"/>
+        <Method name="geraObjetoPartido" returnType="ArrayList&lt;Partido&gt;" visibility="public"/>
+        <Method name="geraObjetoEleitores" returnType="ArrayList&lt;Eleitor&gt;" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="cadEleitorActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cadCandidatoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cadPartidoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="drivePartidoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="driveEleitorActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="driveCandidatoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="driveVotosActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="driveAtualizaActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cadCandidato1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BuscaVotos" package="visao" visibility="public" xPosition="1520.0" yPosition="820.0">
+      <Fields>
+        <Field name="candidatoDao" type="CandidatoDao" visibility="private"/>
+        <Field name="votoBrancoPresidente" type="int" visibility="private"/>
+        <Field name="votoBrancoDeputado" type="int" visibility="private"/>
+        <Field name="botaoBaixaVotos1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="botaoGeraGrafico" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jComboEstado" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jComboTipoCandidato" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="tabelaVotos" type="javax.swing.JTable" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="CandidatoDao" name="candidatoDao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="criaArquivoVotos" returnType="void" visibility="public"/>
+        <Method name="geraObjetoVotacao" returnType="ArrayList&lt;Candidato&gt;" visibility="public"/>
+        <Method name="zera_votos" returnType="void" visibility="public"/>
+        <Method name="contabilizaVotos" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="botaoGeraGraficoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="botaoBaixaVotos1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jComboTipoCandidatoPopupMenuWillBecomeInvisible" returnType="void" visibility="private">
+          <Argument type="javax.swing.event.PopupMenuEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CadastraEleitor" package="visao" visibility="public" xPosition="1820.0" yPosition="820.0">
+      <Fields>
+        <Field name="eleitorDao" type="EleitorDao" visibility="private"/>
+        <Field name="ButtonCadastrar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="ButtonCancelar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="ButttonLimpar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="LabelUrna1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="arquivo" type="javax.swing.JButton" visibility="private"/>
+        <Field name="fileName" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="jComboEstado" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jCpf" type="javax.swing.JFormattedTextField" visibility="private"/>
+        <Field name="jFileChooser1" type="javax.swing.JFileChooser" visibility="private"/>
+        <Field name="jFileChooser2" type="javax.swing.JFileChooser" visibility="private"/>
+        <Field name="jFileChooser3" type="javax.swing.JFileChooser" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabelCpf" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabelNome" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabelTitulo" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jlabelEleitor" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jtfNome" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="jtfTitulo" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="EleitorDao" name="eleitorDao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="novoEleitor" returnType="Eleitor" visibility="public"/>
+        <Method name="limparCampos" returnType="void" visibility="public"/>
+        <Method name="validaEleitor" returnType="String" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="ButttonLimparActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="ButtonCadastrarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="ButtonCancelarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="arquivoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jComboEstadoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CadastraPartido" package="visao" visibility="public" xPosition="2120.0" yPosition="820.0">
+      <Fields>
+        <Field name="partidoDao" type="PartidoDao" visibility="private"/>
+        <Field name="ButtonCadastrar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="ButtonCancelar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="ButttonLimpar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jFileChooser1" type="javax.swing.JFileChooser" visibility="private"/>
+        <Field name="jLabelNome" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabelTitulo" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jlabelEleitor" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jtfNome" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="jtfNumero" type="javax.swing.JFormattedTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="PartidoDao" name="partidoDao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="novoPartido" returnType="Partido" visibility="public"/>
+        <Method name="limparCampos" returnType="void" visibility="public"/>
+        <Method name="validaPartido" returnType="String" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="ButttonLimparActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="ButtonCadastrarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="ButtonCancelarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jtfNumeroActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EnviaEleitores" package="visao" visibility="public" xPosition="20.0" yPosition="1220.0">
+      <Fields>
+        <Field name="eleitorDao" type="EleitorDao" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jenviaEleitores" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jlabelEleitor" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="EleitorDao" name="eleitorDao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="geraJson" returnType="void" visibility="public"/>
+        <Method name="enviaDrive" returnType="void" visibility="public"/>
+        <Method name="apagaDrive" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jenviaEleitoresActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EnviaPartidos" package="visao" visibility="public" xPosition="320.0" yPosition="1220.0">
+      <Fields>
+        <Field name="partidoDao" type="PartidoDao" visibility="private"/>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jlabelEleitor" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="PartidoDao" name="partidoDao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="geraJson" returnType="void" visibility="public"/>
+        <Method name="enviaDrive" returnType="void" visibility="public"/>
+        <Method name="apagaDrive" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CadastraDeputado" package="visao" visibility="public" xPosition="620.0" yPosition="1220.0">
+      <Fields>
+        <Field name="candidatoDao" type="CandidatoDao" visibility="private"/>
+        <Field name="arrayPartido" type="ArrayList&lt;Partido&gt;" visibility="private"/>
+        <Field name="partidoDao" type="PartidoDao" visibility="private"/>
+        <Field name="ButtonCadastrar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="ButtonCancelar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="ButttonLimpar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="LabelEstado" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="LabelPartido" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jComboEstado" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jComboPartido" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jCpf" type="javax.swing.JFormattedTextField" visibility="private"/>
+        <Field name="jFileChooser1" type="javax.swing.JFileChooser" visibility="private"/>
+        <Field name="jLabelCpf" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabelNome" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabelNumero" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jlabelEleitor" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jtfNome" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="jtfNumero" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="CandidatoDao" name="candidatoDao"/>
+          <Argument type="PartidoDao" name="partidoDao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="mostra_erro" returnType="void" visibility="public"/>
+        <Method name="preenchePartidoCombo" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Partido&gt;" name="arrayPartido"/>
+        </Method>
+        <Method name="validaCandidato" returnType="String" visibility="public"/>
+        <Method name="novoDeputado" returnType="Deputado" visibility="public"/>
+        <Method name="limparCampos" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jCpfActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="ButttonLimparActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="ButtonCadastrarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="ButtonCancelarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jComboPartidoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jtfNumeroActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jComboEstadoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CadastraPresidente" package="visao" visibility="public" xPosition="920.0" yPosition="1220.0">
+      <Fields>
+        <Field name="candidatoDao" type="CandidatoDao" visibility="private"/>
+        <Field name="arrayPartido" type="ArrayList&lt;Partido&gt;" visibility="private"/>
+        <Field name="partidoDao" type="PartidoDao" visibility="private"/>
+        <Field name="ButtonCadastrar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="ButtonCancelar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="ButttonLimpar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="LabelPartido" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jComboPartido" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jCpf" type="javax.swing.JFormattedTextField" visibility="private"/>
+        <Field name="jFileChooser1" type="javax.swing.JFileChooser" visibility="private"/>
+        <Field name="jLabelCpf" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabelNome" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabelNumero" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jlabelEleitor" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jtfNome" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="jtfNumero" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="CandidatoDao" name="candidatoDao"/>
+          <Argument type="PartidoDao" name="partidoDao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="mostra_erro" returnType="void" visibility="public"/>
+        <Method name="preenchePartidoCombo" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Partido&gt;" name="arrayPartido"/>
+        </Method>
+        <Method name="validaCandidato" returnType="String" visibility="public"/>
+        <Method name="novoPresidente" returnType="Presidente" visibility="public"/>
+        <Method name="limparCampos" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jCpfActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="ButttonLimparActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="ButtonCadastrarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="ButtonCancelarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jComboPartidoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jtfNumeroActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="eleitorDao" source="visao.EnviaEleitores" target="dao.EleitorDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="modelo.Deputado" target="modelo.Candidato"/>
+    <UseRelation source="visao.CadastraPresidente" target="modelo.Presidente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="dao.CandidatoDao" target="modelo.Candidato" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="visao.Menu" target="modelo.Partido" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="partido" source="modelo.Candidato" target="modelo.Partido" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="visao.CadastraEleitor" target="modelo.Eleitor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="eleitorDao" source="visao.CadastraEleitor" target="dao.EleitorDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="partidoDao" source="visao.CadastraDeputado" target="dao.PartidoDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="visao.BuscaVotos" target="visao.Menu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="visao.CadastraPresidente" target="modelo.Partido" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="arrayPartido" source="visao.CadastraPresidente" target="modelo.Partido" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Partido&gt;"/>
+    <HasRelation name="arrayPartido" source="visao.CadastraDeputado" target="modelo.Partido" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Partido&gt;"/>
+    <UseRelation source="visao.CadastraDeputado" target="modelo.Deputado" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="visao.CadastraDeputado" target="modelo.Partido" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="partidoDao" source="visao.Menu" target="dao.PartidoDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="visao.Menu" target="modelo.Candidato" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="partidos" source="dao.PartidoDao" target="modelo.Partido" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Partido&gt;"/>
+    <IsRelation name="is" source="modelo.Presidente" target="modelo.Candidato"/>
+    <UseRelation source="dao.EleitorDao" target="modelo.Eleitor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="eleitorDao" source="visao.Menu" target="dao.EleitorDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="candidatoDao" source="visao.MostraGraficos" target="dao.CandidatoDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="candidatos" source="dao.CandidatoDao" target="modelo.Candidato" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Candidato&gt;"/>
+    <UseRelation source="visao.Menu" target="modelo.Eleitor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="candidatoDao" source="visao.EnviaCandidatos" target="dao.CandidatoDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="partidoDao" source="visao.EnviaPartidos" target="dao.PartidoDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="candidatoDao" source="visao.CadastraPresidente" target="dao.CandidatoDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="visao.CadastraPartido" target="modelo.Partido" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="eleitores" source="dao.EleitorDao" target="modelo.Eleitor" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Eleitor&gt;"/>
+    <UseRelation source="visao.BuscaVotos" target="modelo.Candidato" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="dao.PartidoDao" target="modelo.Partido" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="partidoDao" source="visao.CadastraPartido" target="dao.PartidoDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.Candidato" target="modelo.Partido" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="candidatoDao" source="visao.Menu" target="dao.CandidatoDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="candidatoDao" source="visao.BuscaVotos" target="dao.CandidatoDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="candidatoDao" source="visao.CadastraDeputado" target="dao.CandidatoDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="partidoDao" source="visao.CadastraPresidente" target="dao.PartidoDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

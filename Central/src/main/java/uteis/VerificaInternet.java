@@ -11,9 +11,14 @@ import java.net.URLConnection;
 
 /**
  *
- * @author weth
+ * @author João Paulo
+ * 
  */
 public class VerificaInternet {
+    /**Método para checar se há conexão com a internet em um determinado endereço
+     * @param endereco
+     * @return Boolean conexão
+     */
     public static boolean verificaConexao(String endereco) {
         try {
             URL url = new URL(endereco);
